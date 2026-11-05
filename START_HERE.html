@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Пошаговая инструкция: локальный запуск DentFlow, GitHub, закрытый Dev Stand, production в РФ, Telegram и резервные копии."><title>DentFlow — инструкция по запуску и развёртыванию</title>
+<style>
+:root{--ink:#14303d;--muted:#59717b;--teal:#087f82;--line:#dce7e7;--surface:#f1f7f6}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}body{margin:0;color:var(--ink);background:var(--surface);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}a{color:#087d86;text-underline-offset:3px}header{background:#102f3b;color:white;padding:52px max(28px,calc((100vw - 1200px)/2)) 46px}header .brand{font-size:23px;font-weight:750;letter-spacing:-1px;display:flex;align-items:center;gap:10px}header .mark{border:2px solid #66d8c8;border-radius:11px;width:31px;height:34px;display:inline-flex;align-items:center;justify-content:center;color:#66d8c8;font-size:19px;letter-spacing:0}header .eyebrow{color:#91c7c9;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:36px}header h1{font-size:clamp(33px,4.8vw,57px);line-height:1.15;letter-spacing:-2px;margin:13px 0 18px;max-width:820px}header p{max-width:720px;color:#bed3d8;font-size:18px;line-height:1.6;margin:0}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}.pills span{padding:6px 13px;border:1px solid #355762;border-radius:50px;font-size:12px;color:#c6e8e5}.layout{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:265px minmax(0,1fr);gap:34px;padding:34px 28px 70px}aside{position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto;padding:0 14px 20px 0}aside strong{font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}nav a{display:block;text-decoration:none;font-size:12px;line-height:1.5;padding:6px 10px;border-radius:7px;margin-top:3px;color:#56717a}nav a:hover,nav a.active{background:#dbecea;color:#07696e}nav .depth-1{font-size:13px;font-weight:750;color:var(--ink);margin-top:16px}main{min-width:0}.intro{padding:25px 28px;margin-bottom:28px;border:1px solid #c4e4dc;border-radius:17px;background:#e4f3ec}.intro strong{font-size:20px}.intro p{margin:8px 0 0}.intro .quick{margin-top:15px;display:flex;gap:10px;flex-wrap:wrap}.quick a{font-size:13px;text-decoration:none;background:white;border:1px solid #c5ded8;padding:7px 12px;border-radius:8px}article{background:white;border:1px solid var(--line);border-radius:18px;padding:34px 38px;margin-bottom:30px;box-shadow:0 10px 30px #183c4410}article h1{font-size:29px;line-height:1.3;letter-spacing:-.6px;margin:0 0 23px;padding-bottom:21px;border-bottom:1px solid var(--line)}h2{font-size:23px;line-height:1.35;letter-spacing:-.45px;margin:42px 0 17px;padding-top:9px}h3{font-size:18px;line-height:1.4;margin:27px 0 12px}p{margin:13px 0}li{padding-left:3px;margin:6px 0}ul,ol{padding-left:24px}strong{font-weight:700}table{border-collapse:separate;border-spacing:0;width:100%;margin:22px 0;font-size:13px;line-height:1.55;border:1px solid var(--line);border-radius:9px;overflow:hidden}th{text-align:left;background:#edf5f4;color:#234651;font-size:12px}th,td{padding:11px 13px;vertical-align:top;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}tr:nth-child(even) td{background:#fbfdfc}td:first-child{font-weight:550}code{font:12.5px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;background:#edf3f3;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}pre{position:relative;white-space:pre;overflow:auto;background:#132f3a;color:#e2f3ef;padding:20px 19px;border-radius:11px;margin:20px 0}pre code{background:none;padding:0;color:inherit;overflow-wrap:normal;font-size:12px}pre .copy{position:absolute;right:8px;top:6px;color:#aac8cb;background:#244650;border:1px solid #44616a;border-radius:5px;padding:3px 7px;font:10px/1.5 inherit;cursor:pointer}pre:hover .copy{color:white}blockquote{margin:20px 0;border-left:4px solid var(--teal);padding:9px 20px;background:#f0f8f6}footer{max-width:1260px;margin:0 auto;padding:0 28px 35px;color:var(--muted);font-size:12px}.toplink{position:fixed;bottom:20px;right:23px;border-radius:30px;background:var(--teal);color:white;padding:9px 17px;text-decoration:none;font-size:12px;box-shadow:0 4px 15px #14313c25}.print-btn{margin-top:16px;font:12px/1.5 inherit;padding:8px 12px;border:1px solid #bfd3d3;border-radius:8px;background:white;cursor:pointer;color:var(--ink)}@media(max-width:900px){.layout{grid-template-columns:1fr;gap:10px;padding:20px 16px}aside{position:static;max-height:240px;background:white;border:1px solid var(--line);padding:14px;border-radius:12px}aside nav{display:grid;grid-template-columns:1fr 1fr;gap:3px}article{padding:24px 22px}header{padding:32px 23px}header h1{letter-spacing:-1px}table{display:block;overflow-x:auto}}@media(max-width:520px){aside nav{grid-template-columns:1fr}article{padding:22px 17px}article h1{font-size:25px}h2{font-size:21px}body{font-size:15px}pre{padding:28px 13px 16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:white;font-size:11pt;color:black}aside,.toplink,.print-btn,.copy,.quick{display:none!important}.layout{display:block;padding:0;max-width:none}article{padding:0;border:0;box-shadow:none;border-radius:0}header{padding:15px 0;background:white;color:black}header .brand,header .eyebrow,header p{color:#333}header h1{font-size:28pt}header .pills{display:none}.intro{background:white;margin:20px 0;border:1px solid #aaa}pre{white-space:pre-wrap;background:#f1f1f1;color:black;border:1px solid #ddd}table{break-inside:auto}tr,h2,h3{break-inside:avoid}h2,h3{break-after:avoid}a{color:black}footer{padding:10px 0}.brand .mark{color:#333;border-color:#333}}
+</style></head><body id="top"><header><div class="brand"><span class="mark">D</span>DentFlow</div><div class="eyebrow">Руководство по запуску · 05 ноября 2026</div><h1>От архива до работающего проекта.</h1><p>Пошагово: проверка на своём компьютере, загрузка исходников в GitHub, закрытый тестовый стенд и отдельный сервер для пилота.</p><div class="pills"><span>Windows · macOS · Linux</span><span>Без API-ключей для первого запуска</span><span>Отдельные Dev Stand и Production</span></div></header><div class="layout"><aside><strong>Навигация</strong><nav><a class="depth-1" href="#section-1">Развёртывание DentFlow: инструкция для новичка</a><a class="depth-2" href="#section-2">1. Что вы получили</a><a class="depth-2" href="#section-3">2. Подготовьте компьютер</a><a class="depth-2" href="#section-8">3. Откройте проект и выполните первый тест</a><a class="depth-2" href="#section-9">4. Остановка, повторный запуск, данные</a><a class="depth-2" href="#section-10">5. Загрузите проект в GitHub</a><a class="depth-2" href="#section-14">6. Закрытый Dev Stand на российском сервере</a><a class="depth-2" href="#section-19">7. Отдельный production-контур</a><a class="depth-2" href="#section-20">8. Домен и HTTPS</a><a class="depth-2" href="#section-25">9. Резервные копии и восстановление</a><a class="depth-2" href="#section-26">10. Мониторинг</a><a class="depth-2" href="#section-27">11. Telegram и AI</a><a class="depth-2" href="#section-28">12. Обновления и необязательный ручной CD</a><a class="depth-2" href="#section-29">13. Если что-то не получилось</a><a class="depth-2" href="#section-30">14. Признаки успешного первого запуска</a><a class="depth-1" href="#section-31">Dev Stand: подробный сценарий проверки</a><a class="depth-2" href="#section-32">Доступ и роли</a><a class="depth-2" href="#section-33">Исходные данные</a><a class="depth-2" href="#section-34">Тест 1. Запись через сайт</a><a class="depth-2" href="#section-35">Тест 2. Запись через настоящий чат</a><a class="depth-2" href="#section-36">Тест 3. Перенос и освобождение времени</a><a class="depth-2" href="#section-37">Тест 4. Человек перехватывает диалог</a><a class="depth-2" href="#section-38">Тест 5. CRM, задачи и справочники</a><a class="depth-2" href="#section-39">Тест 6. Автоматизации и ускоренное время</a><a class="depth-2" href="#section-40">Тест 7. Изоляция и права</a><a class="depth-2" href="#section-41">Сброс</a><a class="depth-2" href="#section-42">Как закончить приёмку</a><a class="depth-1" href="#section-43">Telegram: подключение собственного бота</a><a class="depth-2" href="#section-44">1. Создайте отдельного тестового бота</a><a class="depth-2" href="#section-45">2. Запишите настройки</a><a class="depth-2" href="#section-46">3. Запустите дополнительный сервис</a><a class="depth-2" href="#section-47">4. Проверьте команды</a><a class="depth-2" href="#section-48">5. Свяжите сайт и Telegram безопасно</a><a class="depth-2" href="#section-49">6. Передача сотруднику</a><a class="depth-2" href="#section-50">7. Напоминания и состояния доставки</a><a class="depth-2" href="#section-51">8. Частые проблемы</a></nav><button class="print-btn" onclick="window.print()">Распечатать / сохранить PDF</button></aside><main><div class="intro"><strong>Ваш первый шаг — локальный запуск</strong><p>Установите Docker Desktop, распакуйте архив и запустите start-скрипт. Затем откройте <a href="http://localhost:8080">localhost:8080</a> и проверьте запись в двух окнах браузера. Внешние Telegram и AI подключаются после этого.</p><div class="quick"><a href="#section-3">Подготовить компьютер</a><a href="#section-1">Полная инструкция</a><a href="#section-31">Тестовый сценарий</a></div></div><article aria-label="DEPLOYMENT"><h1 id="section-1">Развёртывание DentFlow: инструкция для новичка</h1><p><strong>Сначала запустите проект на своём компьютере.</strong> После проверки записи и кабинета можно вынести закрытый Dev Stand на сервер. Контур для реальных клиник создаётся отдельно, без переноса демонстрационных пациентов.</p>
+<p>Архив содержит исходный код. Само наличие проекта на GitHub не запускает сайт. <strong>GitHub хранит код; Docker запускает приложение; сервер делает его доступным по сети.</strong> GitHub Pages не подходит этому проекту: здесь нужен работающий Python backend и PostgreSQL.</p>
+<h2 id="section-2">1. Что вы получили</h2><table>
+<thead>
+<tr>
+<th>Файл / папка</th>
+<th>Для чего нужен</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>START_HERE.html</td>
+<td>Эта инструкция в удобном виде. Открывается без сервера.</td>
+</tr>
+<tr>
+<td>README.md</td>
+<td>Краткий старт и карта проекта</td>
+</tr>
+<tr>
+<td>frontend</td>
+<td>Сайт и кабинеты на Next.js / React</td>
+</tr>
+<tr>
+<td>backend</td>
+<td>API, запись, CRM, авторизация, чат, бот и фоновые задачи</td>
+</tr>
+<tr>
+<td>compose.yaml</td>
+<td>Локальный тестовый стенд</td>
+</tr>
+<tr>
+<td>compose.production.yaml</td>
+<td>Отдельный контур реальных клиник</td>
+</tr>
+<tr>
+<td>.env.example</td>
+<td>Образец локальных настроек; настоящая конфигурация создаётся как .env</td>
+</tr>
+<tr>
+<td>.env.production.example</td>
+<td>Образец production; настоящая конфигурация — .env.production</td>
+</tr>
+<tr>
+<td>start.ps1 / start.sh</td>
+<td>Первый запуск Windows / macOS / Linux</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>Техническая документация и проверяемые ограничения</td>
+</tr>
+<tr>
+<td>.github/workflows</td>
+<td>Автоматические проверки и необязательное ручное развёртывание</td>
+</tr>
+</tbody></table>
+<p>В тестовой клинике только вымышленные люди и цены. В архив не включены действующие API-ключи, реальные пациентские данные, установленные зависимости или локальные секреты.</p>
+<h2 id="section-3">2. Подготовьте компьютер</h2><p>Нужны современная Windows / macOS / Linux, интернет для первой сборки и Docker. Для комфортной сборки проекта планируйте не менее 8 ГБ памяти на компьютере и несколько десятков гигабайт свободного диска. Это ориентир для проекта, а не гарантированный минимум для любой системы.</p>
+<h3 id="section-4">Windows</h3><ol>
+<li>Скачайте установщик по <a href="https://docs.docker.com/desktop/setup/install/windows-install/">официальной инструкции Docker Desktop</a>.</li>
+<li>Установите Docker Desktop с Linux containers / WSL 2. Если установка требует обновить WSL или перезагрузить компьютер, выполните указания установщика.</li>
+<li>Откройте Docker Desktop и дождитесь готовности движка. Одной установки без запуска недостаточно.</li>
+<li>Распакуйте ZIP, например в <code>C:\Projects\dentflow</code>. Не запускайте файлы прямо внутри окна архива.</li>
+<li>Откройте папку, в которой лежит <code>compose.yaml</code>. В адресной строке Проводника наберите <code>powershell</code> и нажмите Enter.</li>
+<li>Проверьте Docker:</li>
+</ol>
+<pre><code class="language-powershell">docker --version
+docker compose version
+</code></pre>
+<p>Обе команды должны показать версии. Затем:</p>
+<pre><code class="language-powershell">powershell -ExecutionPolicy Bypass -File .\start.ps1
+</code></pre>
+<p>Параметр ExecutionPolicy относится к этому отдельному процессу PowerShell. Он не меняет системную политику постоянно. Запускайте скрипт только из полученной папки проекта.</p>
+<h3 id="section-5">macOS</h3><ol>
+<li>Откройте <a href="https://docs.docker.com/desktop/setup/install/mac-install/">официальную страницу Docker Desktop для Mac</a>.</li>
+<li>Выберите установщик под процессор: Apple silicon для M1/M2/M3/M4 и последующих Apple chips; Intel — для Intel Mac. Тип можно посмотреть в меню Apple → «Об этом Mac».</li>
+<li>Установите Docker Desktop в Applications и откройте его.</li>
+<li>Распакуйте ZIP. Откройте приложение Terminal.</li>
+<li>Наберите <code>cd </code> с пробелом, перетащите папку <code>dentflow</code> в Terminal и нажмите Enter. Так не нужно вручную вводить путь.</li>
+<li>Выполните:</li>
+</ol>
+<pre><code class="language-bash">docker compose version
+bash start.sh
+</code></pre>
+<h3 id="section-6">Linux</h3><p>Установите Docker Engine и Compose plugin по <a href="https://docs.docker.com/engine/install/">официальной инструкции для вашего дистрибутива</a>. Затем перейдите в папку проекта и выполните <code>bash start.sh</code>. Для Ubuntu серверный вариант описан ниже. Если пользователь не имеет доступа к Docker, настройте разрешения по официальной инструкции или используйте sudo осознанно; членство в группе docker даёт высокие права на хосте.</p>
+<h3 id="section-7">Что происходит при запуске</h3><p>Скрипт создаёт <code>.env</code> со случайными локальными секретами. Затем Docker скачивает образы, устанавливает зависимости, собирает интерфейс, запускает PostgreSQL и Redis, применяет миграцию и наполняет Smile Avenue. Первый запуск обычно заметно дольше последующих; время зависит от компьютера и сети.</p>
+<p>Нормальные сообщения: <code>Building</code>, <code>Downloading</code>, <code>Running</code>, <code>Healthy</code>. Не закрывайте Docker Desktop. Если команда завершилась ошибкой, сначала прочитайте раздел 13, а не запускайте удаление томов.</p>
+<h2 id="section-8">3. Откройте проект и выполните первый тест</h2><p>После сообщения <code>DentFlow запущен</code> откройте в браузере:</p>
+<p><strong><a href="http://localhost:8080">http://localhost:8080</a></strong></p>
+<p><code>localhost</code> — ваш компьютер. Эта ссылка не открывает проект на телефоне или чужом компьютере. По умолчанию порт привязан к 127.0.0.1, поэтому тестовый стенд не опубликован в интернете.</p>
+<p>Проверка в двух окнах:</p>
+<ol>
+<li>В обычном окне откройте <code>/login</code> и войдите как <code>owner@dentflow.local</code> с паролем <code>Owner-Demo-2026!</code>.</li>
+<li>Откройте кабинет клиники. Владелец видит также справочники и настройки; обычный администратор имеет меньше прав.</li>
+<li>Откройте окно инкогнито и адрес <code>http://localhost:8080/clinic/smile-avenue</code>. Инкогнито отделяет сессию пациента от сотрудника.</li>
+<li>Выберите услугу, филиал, врача, будущую дату и свободное время.</li>
+<li>Введите вымышленные имя и телефон, например «Тестовый Пациент» и <code>+70000000001</code>. Подтвердите отдельное согласие для записи. Напоминания — отдельный выбор.</li>
+<li>Нажмите подтверждение и дождитесь сообщения об успешном сохранении.</li>
+<li>Вернитесь в кабинет и обновите расписание. Перейдите именно на выбранную дату: новые данные могут быть на завтра, а не сегодня.</li>
+<li>Найдите пациента и CRM-лид. Перенесите визит на другой свободный интервал.</li>
+<li>В окне пациента откройте «Мои записи» и обновите данные. Убедитесь, что время изменилось.</li>
+</ol>
+<p>Затем повторите запись <strong>через чат</strong>: «Записаться» → услуга → филиал → врач → время → имя и телефон → отдельное подтверждение согласия. Это проверяет другой интерфейс к той же БД. Подробные проверки, роли и симулятор описаны в DEV_STAND.md.</p>
+<p>Публичный чат на главной странице DentFlow — отдельный иллюстративный пример. Он прямо сообщает, что запись не создаётся. Настоящий тест выполняется в Smile Avenue.</p>
+<h2 id="section-9">4. Остановка, повторный запуск, данные</h2><p>Откройте терминал в папке проекта.</p>
+<pre><code class="language-bash">docker compose stop
+</code></pre>
+<p>Это останавливает приложение и сохраняет данные. Следующий запуск:</p>
+<pre><code class="language-bash">docker compose start
+</code></pre>
+<p>После изменения кода или настроек:</p>
+<pre><code class="language-bash">docker compose up -d --build --wait --wait-timeout 300
+</code></pre>
+<p>Состояние контейнеров:</p>
+<pre><code class="language-bash">docker compose ps
+</code></pre>
+<p>Данные хранятся в Docker volumes. <strong><code>docker compose down -v</code> удаляет тома и базу.</strong> Это не обычная команда остановки. Для возврата исходной Smile Avenue войдите под Super Admin и используйте защищённую кнопку сброса с подтверждением.</p>
+<h2 id="section-10">5. Загрузите проект в GitHub</h2><h3 id="section-11">Вариант А: GitHub Desktop</h3><p>Для первого репозитория проще использовать <a href="https://desktop.github.com/">GitHub Desktop</a>.</p>
+<ol>
+<li>Создайте аккаунт GitHub, установите GitHub Desktop и войдите.</li>
+<li>В Desktop выберите <strong>File → Add Local Repository</strong> и папку <code>dentflow</code>.</li>
+<li>Если написано, что папка ещё не Git repository, нажмите предложенное <strong>Create a repository here</strong>. Проверьте итоговый путь: это должна быть существующая папка с <code>compose.yaml</code>, а не вложенная <code>dentflow/dentflow</code>.</li>
+<li>В списке изменений должны быть <code>frontend</code>, <code>backend</code>, <code>docs</code>, <code>.github</code>, <code>compose.yaml</code> и примеры <code>.env</code>. Настоящих <code>.env</code>, <code>.env.production</code>, файлов БД и backups быть не должно.</li>
+<li>Введите описание первого коммита, например <code>Initial DentFlow MVP</code>, и нажмите <strong>Commit to main</strong>. Если Desktop уже создал initial commit, этот шаг может быть не нужен.</li>
+<li>Нажмите <strong>Publish repository</strong>, задайте имя <code>dentflow</code> и оставьте <strong>Keep this code private</strong> включённым для начала.</li>
+<li>Откройте репозиторий через <strong>Repository → View on GitHub</strong>. Убедитесь, что README отображается, а папки проекта доступны.</li>
+</ol>
+<p>Справка: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop">добавление существующего проекта в GitHub Desktop</a>. Удалять remotes в этом новом архиве не требуется: чужой origin здесь не настроен.</p>
+<h3 id="section-12">Вариант Б: Git в терминале</h3><p>Подходит, если Git уже установлен и настроена авторизация. Создайте на GitHub пустой private repository без автоматически добавленного README. Замените YOUR_LOGIN на свой логин:</p>
+<pre><code class="language-bash">git init
+git branch -M main
+git add .
+git commit -m &quot;Initial DentFlow MVP&quot;
+git remote add origin https://github.com/YOUR_LOGIN/dentflow.git
+git push -u origin main
+</code></pre>
+<p>Если Git попросит имя автора, задайте свои <code>git config user.name</code> и <code>git config user.email</code> в этом репозитории. Авторизация выполняется через поддерживаемый GitHub механизм; не вставляйте токен в remote URL и не сохраняйте его в <code>.env.example</code>.</p>
+<h3 id="section-13">После загрузки</h3><p>Откройте вкладку <strong>Actions</strong>. CI проверяет backend, настоящий PostgreSQL, frontend и сборку Docker. Если проверка красная, откройте конкретный job и сообщение об ошибке. Зелёный CI — важная проверка переносимости, но не замена пилота и проверки внешних сервисов.</p>
+<p>Не загружайте на GitHub только один ZIP: тогда GitHub не сможет показать исходники и запустить приложенные workflow. Загружается именно содержимое архива.</p>
+<h2 id="section-14">6. Закрытый Dev Stand на российском сервере</h2><p>Для демонстрации вне своего компьютера можно взять VM у российского провайдера, например Selectel, Yandex Cloud или VK Cloud, выбрав российский регион и подходящие условия. Ссылки и критерии выбора — MARKET_RESEARCH.md. Начальный ориентир для пилота: Ubuntu 24.04 LTS, 4 vCPU, 8 ГБ RAM и 40–60 ГБ SSD. Это оценка, а не обещание производительности.</p>
+<p>Для новичка безопаснее оставить Dev Stand закрытым и заходить через SSH-туннель. Открывать в интернет тестовые пароли не нужно.</p>
+<h3 id="section-15">Подключение к серверу</h3><p>В панели провайдера создайте VM, добавьте свой SSH-ключ и узнайте IP и имя пользователя. Следующая команда вводится <strong>на вашем компьютере</strong>; замените значения:</p>
+<pre><code class="language-bash">ssh USER@SERVER_IP
+</code></pre>
+<p>При первом подключении сравните fingerprint ключа сервера с доверенным источником провайдера. После входа команды выполняются на сервере, пока вы не введёте <code>exit</code>.</p>
+<h3 id="section-16">Установка Docker на чистую Ubuntu 24.04</h3><p>Проверьте <a href="https://docs.docker.com/engine/install/ubuntu/">актуальную официальную инструкцию</a> перед использованием. Для новой VM:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y ca-certificates curl git unzip python3
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+</code></pre>
+<p>Создайте запись репозитория Docker:</p>
+<pre><code class="language-bash">sudo tee /etc/apt/sources.list.d/docker.sources &gt;/dev/null &lt;&lt;EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release &amp;&amp; echo &quot;${UBUNTU_CODENAME:-$VERSION_CODENAME}&quot;)
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo docker run --rm hello-world
+</code></pre>
+<p>Последняя команда должна завершиться приветственным сообщением Docker. Далее либо используйте sudo для Docker-команд, либо настройте доступ отдельному пользователю по официальной инструкции. Не смешивайте запуск одного проекта из разных папок и под разными Compose project names.</p>
+<h3 id="section-17">Перенос файлов</h3><p>Проще передать ZIP командой <strong>на вашем компьютере</strong>, находясь в папке с архивом:</p>
+<pre><code class="language-bash">scp DentFlow_GitHub.zip USER@SERVER_IP:~/
+</code></pre>
+<p>На сервере:</p>
+<pre><code class="language-bash">unzip DentFlow_GitHub.zip
+cd dentflow
+python3 scripts/configure.py
+sudo docker compose up -d --build --wait --wait-timeout 300
+</code></pre>
+<p>Если вы клонируете private GitHub repository вместо копирования ZIP, используйте отдельный read-only deploy key для сервера. Не кладите личный GitHub-токен в исходники. Для ручного CD из раздела 12 нужен именно git checkout на сервере.</p>
+<h3 id="section-18">Вход через SSH-туннель</h3><p>Если локальная копия уже использует порт 8080, сначала остановите её командой <code>docker compose stop</code>. В новом терминале <strong>на вашем компьютере</strong>:</p>
+<pre><code class="language-bash">ssh -N -L 8080:127.0.0.1:8080 USER@SERVER_IP
+</code></pre>
+<p>Не закрывайте это окно. Откройте <a href="http://localhost:8080">http://localhost:8080</a>. Теперь браузер подключён к серверному стенду через SSH. Публичный доступ к порту 8080 остаётся закрытым. Для завершения туннеля нажмите Ctrl+C.</p>
+<p>Домен dev.example.ru для такого способа не нужен. Если нужен общий закрытый домен для команды, настройте VPN или дополнительную проверку доступа на reverse proxy; одной страницы входа с опубликованными демопаролями недостаточно.</p>
+<h2 id="section-19">7. Отдельный production-контур</h2><p>Этот раздел создаёт техническую основу для будущего пилота реальной клиники. До ввода настоящих данных пройдите проверки SECURITY.md, LEGAL_COMPLIANCE.md и ROADMAP.md. Не переносите вымышленных пациентов и тестовые учётные записи в рабочую базу.</p>
+<p>Используйте <strong>другую VM</strong> и отдельные ключи. Установите Docker по предыдущему разделу. Разместите код в <code>/opt/dentflow</code>; пользователь развёртывания должен владеть этой папкой.</p>
+<p>В папке проекта создайте конфигурацию, заменив домен на свой:</p>
+<pre><code class="language-bash">python3 scripts/configure.py --production --domain app.example.ru
+</code></pre>
+<p>Скрипт создаст <code>.env.production</code>, случайные DB password/SECRET_KEY и HTTPS origins. Если файл уже существует, он не перезаписывается. Откройте его локальным текстовым редактором на сервере, например <code>nano .env.production</code>, и проверьте домен. Не отправляйте этот файл в GitHub или переписку.</p>
+<p>Запуск:</p>
+<pre><code class="language-bash">sudo docker compose --env-file .env.production -f compose.production.yaml up -d --build --wait --wait-timeout 300
+</code></pre>
+<p>Создаётся отдельная БД <code>dentflow_production</code>, выполняется миграция, запускается приложение. Seed демонстрационной клиники <strong>не вызывается</strong>. Окружение принудительно production, dev-инструменты выключены, cookie требуют HTTPS.</p>
+<p>Создайте владельца платформы:</p>
+<pre><code class="language-bash">sudo docker compose --env-file .env.production -f compose.production.yaml exec backend python -m app.bootstrap --email owner@example.ru --name &quot;Владелец DentFlow&quot;
+</code></pre>
+<p>Введите новый уникальный пароль дважды. При вводе символы могут не отображаться — это нормально. Пароль не передаётся в командной строке и не печатается. Тестовый <code>super@dentflow.local</code> в production не создаётся.</p>
+<p>Далее настройте HTTPS; до этого production login по обычному HTTP работать корректно не должен из-за Secure cookie.</p>
+<h2 id="section-20">8. Домен и HTTPS</h2><h3 id="section-21">DNS</h3><p>У регистратора своего домена добавьте A-запись:</p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Имя</td>
+<td>app</td>
+</tr>
+<tr>
+<td>Тип</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Значение</td>
+<td>IP production-сервера</td>
+</tr>
+</tbody></table>
+<p>Это свяжет <code>app.ВАШ-ДОМЕН.ru</code> с сервером. Не оставляйте <code>app.example.ru</code>: это текстовый пример. Дождитесь обновления DNS и проверьте, что он указывает на вашу VM.</p>
+<h3 id="section-22">Reverse proxy</h3><p>На сервере установите Nginx:</p>
+<pre><code class="language-bash">sudo apt install -y nginx
+sudo cp infra/host-nginx.example.conf /etc/nginx/sites-available/dentflow
+sudo nano /etc/nginx/sites-available/dentflow
+</code></pre>
+<p>В файле замените <code>app.example.ru</code> на свой домен. Затем:</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/dentflow /etc/nginx/sites-enabled/dentflow
+sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<p>Если ссылка уже существует, повторно создавать её не нужно. <code>nginx -t</code> должен завершиться сообщением об успешной проверке. В security group провайдера разрешите 80 и 443 для сайта, а SSH — только из доверенных сетей. PostgreSQL 5432, Redis 6379, Python 8000 и Next.js 3000 наружу не публикуются.</p>
+<h3 id="section-23">Сертификат</h3><p>Используйте <a href="https://certbot.eff.org/instructions?ws=nginx&os=snap">официальную инструкцию Certbot для Nginx</a>. На чистом Ubuntu-сервере со snap:</p>
+<pre><code class="language-bash">sudo apt install -y snapd
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx -d app.example.ru
+sudo certbot renew --dry-run
+</code></pre>
+<p>Замените домен. Если certbot уже установлен другим способом, не смешивайте установки: следуйте инструкции его обновления. Программа запросит рабочий email и принятие условий сертификата. Проверка renew должна пройти успешно. При необходимости выбирайте перенаправление HTTP на HTTPS.</p>
+<p>Откройте <strong>https://ВАШ-ДОМЕН/login</strong>, войдите созданным владельцем, перейдите в Super Admin, создайте клинику и её владельца. Затем войдите под владельцем клиники и добавьте филиалы, услуги, врачей и смены. Для нового врача нужно явно связать услуги и создать рабочие дни — иначе свободных слотов не будет.</p>
+<h3 id="section-24">Собственный домен клиники</h3><p>Приложение уже обслуживает <code>/clinic/&lt;slug&gt;</code> на общем backend. Для домена клиники настройте DNS/HTTPS на тот же сервер, добавьте точный origin в ALLOWED_ORIGINS и в server-блоке направьте корень на страницу её slug:</p>
+<pre><code class="language-nginx">location = / {
+    return 302 /clinic/my-clinic;
+}
+</code></pre>
+<p>Остальные пути, включая <code>/api</code>, передавайте тому же gateway. Это ручная эксплуатационная настройка; поле домена в кабинете не меняет DNS автоматически. Связь с клиникой по slug всё равно проверяет backend.</p>
+<h2 id="section-25">9. Резервные копии и восстановление</h2><p>Перед обновлением и регулярно в production:</p>
+<pre><code class="language-bash">bash scripts/backup.sh production
+</code></pre>
+<p>Если Docker доступен только с sudo, запустите <code>sudo bash scripts/backup.sh production</code>. Скрипт создаёт custom dump в <code>backups/production/</code>, не печатает секреты и не меняет данные. Локальный Dev Stand сохраняется командой <code>bash scripts/backup.sh devstand</code>.</p>
+<p>Перенесите копию в защищённое хранилище в согласованном российском регионе. Сроки хранения, шифрование и доступ определяет оператор. Копия, лежащая только на той же VM, не защищает от её потери.</p>
+<p>Проверить восстановление можно в <strong>новую</strong> БД:</p>
+<pre><code class="language-bash">bash scripts/restore.sh production backups/production/ИМЯ_КОПИИ.dump dentflow_production_restore_20261105
+</code></pre>
+<p>Команда не очищает рабочую базу. Она откажется использовать имя без <code>dentflow_production_restore_</code>. Проверьте восстановленные записи и миграцию через <code>psql</code> или отдельно поднятую изолированную копию. Автоматического переключения production на восстановленную БД нет.</p>
+<p>Переключение после аварии — задача ответственного администратора: остановить запись, сверить последнюю подтверждённую копию, зафиксировать возможную потерю данных, проверить совместимость версии приложения, изменить целевую БД в <strong>копии</strong> production Compose и выполнить контрольный сценарий. Не подменяйте рабочую БД непроверенной копией и не делайте автоматический downgrade.</p>
+<p>Для ежедневного резервирования можно настроить cron у пользователя с нужным доступом к Docker. Это пример задания на сервере, который вы добавляете самостоятельно:</p>
+<pre><code class="language-cron">0 3 * * * cd /opt/dentflow &amp;&amp; /bin/bash scripts/backup.sh production &gt;&gt; /var/log/dentflow-backup.log 2&gt;&amp;1
+</code></pre>
+<p>03:00 здесь — часовой пояс самого сервера. Убедитесь, что пользователь может писать в указанный журнал, настроены его ротация и контроль ошибок. Сам код проекта не создаёт cron и не покупает хранилище.</p>
+<h2 id="section-26">10. Мониторинг</h2><p>Проверьте состояние контейнеров, health endpoint, очередь и диск:</p>
+<pre><code class="language-bash">docker compose --env-file .env.production -f compose.production.yaml ps
+docker compose --env-file .env.production -f compose.production.yaml logs --tail=100 backend worker
+curl --fail https://app.example.ru/api/health
+df -h
+</code></pre>
+<p>Нужны оповещения о недоступности health, росте failed/pending в очереди, истечении сертификата, заполнении диска и неуспешной резервной копии. В коде есть health checks и heartbeat worker в Redis, но внешняя система мониторинга и получатели оповещений требуют вашей настройки. Внешнему мониторингу не передавайте историю пациентов и секреты.</p>
+<h2 id="section-27">11. Telegram и AI</h2><p>Базовый стенд работает без ключей. Не начинайте с подключения платных API. Сначала проверьте запись, затем следуйте TELEGRAM_SETUP.md и AI_CONFIGURATION.md.</p>
+<p>Для Telegram нужен ваш бот от BotFather, <code>TELEGRAM_ENABLED=true</code>, token и slug клиники. Для внешнего AI нужны <code>AI_EXTERNAL_ENABLED=true</code>, соответствующие переменные и выбор провайдера в кабинете. Затраты возникают на стороне провайдера; код не обещает бесплатного коммерческого тарифа.</p>
+<p>Для новой интеграции GigaChat проверьте тип своего аккаунта и актуальный маршрут подключения: подготовленный OAuth-адаптер не равен отдельному адаптеру Cloud.ru. Подробности и официальные источники находятся в AI_CONFIGURATION.md.</p>
+<h2 id="section-28">12. Обновления и необязательный ручной CD</h2><p>Перед обновлением выполните backup. Для локального стенда после замены исходников используйте <code>docker compose up -d --build --wait</code>. Для production сначала проверяйте изменения миграций на изолированной копии.</p>
+<p>Ручной CD из GitHub требует дополнительной настройки:</p>
+<ol>
+<li>Код на сервере должен быть git checkout в <code>/opt/dentflow</code>, а не только распакованный архив. Настройте read-only deploy key для чтения приватного репозитория.</li>
+<li>Пользователь развёртывания должен иметь SSH-доступ, доступ к Docker и владеть папкой.</li>
+<li>В GitHub создайте environment <code>production</code> и требование ручного одобрения, если ваш тариф/репозиторий поддерживает эту возможность.</li>
+<li>Задайте secrets <code>DEPLOY_HOST</code>, <code>DEPLOY_USER</code>, <code>SSH_PRIVATE_KEY</code>, <code>SSH_KNOWN_HOSTS</code>. Последний содержит заранее проверенный ключ сервера, а не случайно принятый при подключении.</li>
+<li>Дождитесь успешного CI нужного commit. Откройте Actions → «Развернуть утверждённый commit» → Run workflow и вставьте полный 40-символьный SHA.</li>
+</ol>
+<p>Скрипт проверяет принадлежность commit ветке main, создаёт backup, собирает контейнеры, выполняет миграции и health checks. Он не откатывает БД автоматически при ошибке: совместимость схемы требует решения ответственного. Если ключи не заданы, эта возможность не работает и сервер никуда сам не публикуется.</p>
+<h2 id="section-29">13. Если что-то не получилось</h2><table>
+<thead>
+<tr>
+<th>Что видно</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>docker</code> не найден</td>
+<td>Установить Docker, заново открыть терминал и проверить <code>docker --version</code>.</td>
+</tr>
+<tr>
+<td><code>Cannot connect to Docker daemon</code></td>
+<td>Открыть Docker Desktop и дождаться готовности; на сервере проверить сервис Docker.</td>
+</tr>
+<tr>
+<td><code>no configuration file provided</code></td>
+<td>Вы в другой папке. Перейдите туда, где лежит compose.yaml.</td>
+</tr>
+<tr>
+<td>Не найден .env</td>
+<td>Запустите start-скрипт либо <code>python3 scripts/configure.py</code>. Не переименовывайте образец в production без генерации секретов.</td>
+</tr>
+<tr>
+<td>Порт 8080 занят</td>
+<td>Остановите другую копию. Для другого порта измените одновременно HTTP_PORT, PUBLIC_URL и ALLOWED_ORIGINS в .env, затем пересоздайте контейнеры.</td>
+</tr>
+<tr>
+<td>502 Bad Gateway сразу после сборки</td>
+<td><code>docker compose ps</code> и <code>docker compose logs --tail=100 backend frontend</code>; дождаться Healthy или исправить показанную ошибку.</td>
+</tr>
+<tr>
+<td>Сборка прервалась / нехватка памяти</td>
+<td>Освободить диск, выделить Docker больше памяти; повторить сборку без удаления DB volumes.</td>
+</tr>
+<tr>
+<td>Пароль PostgreSQL не подходит после редактирования .env</td>
+<td>Пароль существующего volume не меняется от редактирования env. Верните прежнее значение либо измените роль БД штатной процедурой. Не удаляйте рабочий том.</td>
+</tr>
+<tr>
+<td>403 при сохранении</td>
+<td>Проверьте Origin/ALLOWED_ORIGINS и роль. Owner управляет справочниками; Administrator имеет меньше прав.</td>
+</tr>
+<tr>
+<td>Вход сразу исчезает на production</td>
+<td>Используйте HTTPS, проверьте домен и Secure cookie. Не отключайте COOKIE_SECURE ради обхода.</td>
+</tr>
+<tr>
+<td>Нет свободных слотов</td>
+<td>Проверьте активность филиала/врача/услуги, связь врача с услугой, смену на нужный день, перерыв и будущую дату.</td>
+</tr>
+<tr>
+<td>Запись не видна в календаре</td>
+<td>Выберите дату визита и правильный филиал/врача; обновите данные. Проверьте, что пациент и администратор открыли один стенд.</td>
+</tr>
+<tr>
+<td>«Мои записи» пусто в другом браузере</td>
+<td>Сессии независимы. Совпадение телефона не подтверждает личность. Используйте исходный браузер или настроенный аккаунт пациента.</td>
+</tr>
+<tr>
+<td>Не удаётся записаться дважды на одно время</td>
+<td>Это ожидаемая защита. Выберите другой свободный интервал.</td>
+</tr>
+<tr>
+<td>Telegram не отвечает</td>
+<td>Проверить token, TELEGRAM_ENABLED, профиль telegram, slug, отсутствие второго polling/webhook и журнал сервиса.</td>
+</tr>
+<tr>
+<td>AI отвечает шаблонно</td>
+<td>В demo это ожидаемо. Внешняя модель ограниченно классифицирует административные запросы; свободная медицинская консультация не предусмотрена.</td>
+</tr>
+<tr>
+<td>Заявка на сайте не пришла на email</td>
+<td>Она сохраняется в Super Admin. Email-провайдер не подключён.</td>
+</tr>
+<tr>
+<td>Виджет на другом домене не помнит сессию</td>
+<td>Браузер может блокировать third-party cookies. Откройте чат отдельной вкладкой или настройте same-origin reverse proxy.</td>
+</tr>
+</tbody></table>
+<p>При обращении за помощью достаточно прислать текст ошибки, команду и обезличенные последние строки нужного журнала. Не присылайте <code>.env</code>, токены, резервные копии и данные пациентов.</p>
+<h2 id="section-30">14. Признаки успешного первого запуска</h2><p>Главная страница открывается, владелец клиники входит, пациент в другом окне создаёт запись, сотрудник видит её и CRM-лид, перенос отражается у пациента, занятой интервал повторно не предлагается. Эти действия важнее одного зелёного health endpoint.</p>
+<p>Для commercial pilot отдельно завершаются проверка production на вашей инфраструктуре, живой тест Telegram/AI/МИС, резервирование и восстановление, юридическая оценка и организационные документы. Фактически выполненные проверки этого выпуска перечислены в TESTING.md.</p>
+</article><article aria-label="DEV_STAND"><h1 id="section-31">Dev Stand: подробный сценарий проверки</h1><h2 id="section-32">Доступ и роли</h2><p>Локальный адрес: <strong><a href="http://localhost:8080">http://localhost:8080</a></strong>. На отдельном сервере используйте SSH-туннель из DEPLOYMENT.md; публичный dev-домен в архиве не создан.</p>
+<table>
+<thead>
+<tr>
+<th>Роль</th>
+<th>Логин</th>
+<th>Тестовый пароль</th>
+<th>Что проверять</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Super Admin</td>
+<td><a href="mailto:super@dentflow.local">super@dentflow.local</a></td>
+<td>Super-Demo-2026!</td>
+<td>Создание/блокировка клиник, тарифы, сводка, сброс</td>
+</tr>
+<tr>
+<td>Clinic Owner</td>
+<td><a href="mailto:owner@dentflow.local">owner@dentflow.local</a></td>
+<td>Owner-Demo-2026!</td>
+<td>Все операции своей клиники, сотрудники, справочники</td>
+</tr>
+<tr>
+<td>Clinic Manager</td>
+<td><a href="mailto:manager@dentflow.local">manager@dentflow.local</a></td>
+<td>Manager-Demo-2026!</td>
+<td>Записи, настройки, справочники; без управления сотрудниками</td>
+</tr>
+<tr>
+<td>Administrator</td>
+<td><a href="mailto:admin@dentflow.local">admin@dentflow.local</a></td>
+<td>Admin-Demo-2026!</td>
+<td>Записи, CRM, задачи, диалоги</td>
+</tr>
+<tr>
+<td>Doctor</td>
+<td><a href="mailto:doctor@dentflow.local">doctor@dentflow.local</a></td>
+<td>Doctor-Demo-2026!</td>
+<td>Собственное расписание и связанные пациенты</td>
+</tr>
+<tr>
+<td>Patient</td>
+<td><a href="mailto:patient@dentflow.local">patient@dentflow.local</a></td>
+<td>Patient-Demo-2026!</td>
+<td>Свои записи и согласия</td>
+</tr>
+<tr>
+<td>Другая клиника</td>
+<td><a href="mailto:other@dentflow.local">other@dentflow.local</a></td>
+<td>Other-Demo-2026!</td>
+<td>Изоляция второй клиники Аврора Дент</td>
+</tr>
+</tbody></table>
+<p>Панель переходов Dev Stand показывает ссылки на роли и страницы, но не выдаёт права. Для смены роли нужно выйти и войти другим аккаунтом. Super Admin не может читать клинические данные через <code>/admin</code>. Пациент не может превратить себя в сотрудника.</p>
+<p>Для тестирования двух сторон используйте два браузера либо обычное окно для сотрудника и инкогнито для пациента. Несколько вкладок одного браузерного профиля разделяют cookie: вход в одной вкладке меняет роль в других. После logout исходные возможности гостевой сессии отзываются; это сделано намеренно.</p>
+<h2 id="section-33">Исходные данные</h2><p>Smile Avenue содержит 2 филиала, 5 врачей, 12 услуг с ценами в рублях, недельные смены, 30 вымышленных пациентов, 20 будущих записей, CRM, 4 примера диалогов и задачи. Визиты распределены на ближайшие дни после seed; для просмотра переключите календарь на завтра или неделю.</p>
+<p>Номера <code>+7000…</code> и адреса демо-города синтетические. Второй tenant Аврора Дент нужен для проверки разграничения. Сам факт имени в демонстрации не утверждает существование реального врача или клиники.</p>
+<h2 id="section-34">Тест 1. Запись через сайт</h2><ol>
+<li>Пациент открывает <code>/clinic/smile-avenue</code>.</li>
+<li>Изучает врачей и цены; запускает форму записи.</li>
+<li>Выбирает услугу, филиал, врача, будущую дату и свободный интервал.</li>
+<li>Вводит вымышленные имя и телефон. Согласие на запись обязательно; напоминания и маркетинг не подменяют его.</li>
+<li>Нажимает подтверждение. Успех показывается только после ответа backend.</li>
+<li>Открывает «Мои записи» и видит созданный визит.</li>
+<li>Сотрудник открывает Расписание / Записи, выбирает ту же дату и обновляет данные.</li>
+<li>В Пациентах и CRM появляется тот же человек и лид. Лид не должен возникать заново при сетевом повторе того же запроса.</li>
+</ol>
+<p>Отказ от обязательного согласия не создаёт запись. Доступные интервалы рассчитываются сервером; если другой пользователь занял время между просмотром и подтверждением, возвращается конфликт и предлагается выбрать заново.</p>
+<h2 id="section-35">Тест 2. Запись через настоящий чат</h2><p>На сайте Smile Avenue откройте чат. Используйте «Записаться на приём», затем варианты услуги, филиала, врача и времени. При запросе контактов отправьте, например:</p>
+<pre><code class="language-text">Тестовый Гость, +70000000222
+</code></pre>
+<p>Затем выберите отдельную кнопку подтверждения записи с нужным вариантом напоминаний. Проверьте тот же визит в административном календаре. В Диалогах видна история, в CRM — карточка. Это общая БД и один сервис записи, а не независимая демонстрация.</p>
+<p>Вопрос о ценах показывает актуальный справочник. Медицинский вопрос передаётся человеку; AI не ставит диагноз и не назначает лекарства. Публичный демо-чат на главной DentFlow не заменяет этот тест.</p>
+<h2 id="section-36">Тест 3. Перенос и освобождение времени</h2><p>В кабинете сотрудника откройте созданный визит и перенесите его на доступное время. Обновите «Мои записи» пациента: новое время должно совпасть. Исходный интервал снова должен появиться в доступных. Второй пациент в новом инкогнито-профиле может его занять.</p>
+<p>Попытка занять пересекающийся интервал должна завершиться 409. Проверяется полная длительность, а не только совпадение начала. Перерыв и часы вне смены не предлагаются. После отмены запись сохраняется в истории со статусом, время освобождается.</p>
+<h2 id="section-37">Тест 4. Человек перехватывает диалог</h2><p>Пациент нажимает «Позвать администратора». В кабинете появляется задача. Сотрудник открывает Диалоги, выбирает обращение, включает режим сотрудника и отвечает. Ответ сохраняется; пациент видит его после обновления чата. Пока работает человек, AI не продолжает самостоятельную запись в этом диалоге. При необходимости сотрудник явно возвращает режим AI.</p>
+<p>Telegram использует тот же механизм. Для его проверки сначала подключите собственный бот по TELEGRAM_SETUP.md; без token никакие сообщения реальным людям не отправляются. Ответы оператора в Telegram ограничиваются административным общением.</p>
+<h2 id="section-38">Тест 5. CRM, задачи и справочники</h2><p>Управляйте стадией лида перетаскиванием или выбором стадии. Изменение сохраняется через API. Создайте задачу, назначьте ответственного и завершите её. Под Owner добавьте филиал, услугу и врача. Свяжите врача с услугой и добавьте смену на нужный день. Только после этого на сайте появляются свободные интервалы.</p>
+<p>Если смена конфликтует с уже созданными будущими визитами, backend не должен молча скрывать их: сначала перенесите/отмените визиты. Сотрудник другой клиники не может назначаться ответственным.</p>
+<h2 id="section-39">Тест 6. Автоматизации и ускоренное время</h2><p>Откройте Автоматизации под Owner или Manager. Включайте/отключайте правила и задавайте задержки. Кнопка запуска оценивает реальные условия и сохраняет уведомления/задачи. Фоновый worker делает это автоматически, пока контейнер работает.</p>
+<p>В Dev Stand симулятор поддерживает:</p>
+<table>
+<thead>
+<tr>
+<th>Событие</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Новое обращение</td>
+<td>Синтетический пациент и новый лид</td>
+</tr>
+<tr>
+<td>Отмена / свободный слот</td>
+<td>Отменяет подходящий будущий тестовый визит</td>
+</tr>
+<tr>
+<td>Пропущенный ответ</td>
+<td>Диалог с выдержанной задержкой и задача сотруднику</td>
+</tr>
+<tr>
+<td>Задача</td>
+<td>Новая тестовая задача</td>
+</tr>
+<tr>
+<td>Напоминание</td>
+<td>Оценка времени перед ближайшим визитом без ожидания реальных суток</td>
+</tr>
+<tr>
+<td>Передача человеку</td>
+<td>Диалог в human и задача</td>
+</tr>
+</tbody></table>
+<p>Ускорение — параметр оценки правил; системные часы сервера не меняются. В production такое ускорение запрещено. Дедупликация не позволяет одному правилу повторно создать то же уведомление для того же визита/времени.</p>
+<p>Различайте внутреннее уведомление, очередь Telegram и действительно принятую Telegram API отправку. Отзыв согласия на уведомления отменяет ожидающие уведомления; отзыв маркетинга отдельно отменяет реактивацию. Worker повторно проверяет разрешение перед отправкой.</p>
+<h2 id="section-40">Тест 7. Изоляция и права</h2><p>Выйдите из Smile Avenue и войдите как <a href="mailto:other@dentflow.local">other@dentflow.local</a>. В кабинете должна появиться Аврора Дент, без пациентов и визитов Smile Avenue. Под Doctor должны отображаться собственные приёмы, а не общая CRM. Под Patient <code>/admin</code> и <code>/super</code> должны быть запрещены. Super Admin видит сводку и управление подписками, без выдачи полного списка чужих пациентов.</p>
+<p>Знание чужого UUID не даёт права на объект. Нельзя объединять людей по совпадающему телефону: другой браузер без доказанного владения получает отдельную личность.</p>
+<h2 id="section-41">Сброс</h2><p>Войдите как Super Admin. Нажмите «Сбросить тестовые данные», прочитайте подтверждение и введите требуемую фразу <code>RESET SMILE AVENUE</code>. Восстанавливается только Smile Avenue; другая клиника остаётся. Тестовые сотрудники и пациенты Smile Avenue должны войти заново.</p>
+<p>Сброс невозможен в production: есть проверка окружения, флага, имени БД, роли и признака демо-клиники. Для обычной остановки используйте <code>docker compose stop</code>, а не сброс.</p>
+<h2 id="section-42">Как закончить приёмку</h2><p>Сохраните дату, commit, окружение и результат каждого сценария. Не подменяйте живой тест Telegram проверкой кода без токена. Технический отчёт о выполненных в среде разработки проверках находится в TESTING.md; после развёртывания повторите сценарии в настоящем браузере на вашей VM.</p>
+</article><article aria-label="TELEGRAM_SETUP"><h1 id="section-43">Telegram: подключение собственного бота</h1><p>Бот в архиве написан на aiogram и использует <strong>тот же движок диалога и ту же БД</strong>, что веб-чат. Без вашего токена и явного включения Telegram никакие сообщения не отправляются. Проверка кода с синтетическими ответами API не заменяет живую проверку своего бота.</p>
+<h2 id="section-44">1. Создайте отдельного тестового бота</h2><ol>
+<li>Откройте в Telegram официальный <a href="https://t.me/BotFather">BotFather</a>. Проверьте username: <code>@BotFather</code>.</li>
+<li>Отправьте <code>/newbot</code>.</li>
+<li>Задайте понятное имя, например «DentFlow тест».</li>
+<li>Укажите свободный username, оканчивающийся на <code>bot</code>.</li>
+<li>BotFather выдаст token. Сохраните его как секрет; не вставляйте в исходники и не публикуйте скриншот с ним.</li>
+</ol>
+<p>Dev Stand и production должны использовать <strong>разных ботов и разные токены</strong>. Если токен стал публичным, перевыпустите его через BotFather и обновите окружение.</p>
+<p>Официальные справки: <a href="https://core.telegram.org/bots/tutorial">первые шаги Bot API</a>, <a href="https://core.telegram.org/bots/api">Telegram Bot API</a>, <a href="https://docs.aiogram.dev/en/latest/">aiogram</a>.</p>
+<h2 id="section-45">2. Запишите настройки</h2><p>В локальном <code>.env</code> измените:</p>
+<pre><code class="language-dotenv">TELEGRAM_ENABLED=true
+TELEGRAM_BOT_TOKEN=ВАШ_СЕКРЕТНЫЙ_ТОКЕН
+TELEGRAM_BOT_USERNAME=your_test_bot
+TELEGRAM_CLINIC_SLUG=smile-avenue
+</code></pre>
+<p>Username вводится без <code>@</code>. Slug — часть адреса после <code>/clinic/</code>, не название клиники с пробелами. В .env.production используйте slug созданной production-клиники и её отдельный токен.</p>
+<p>Пример <code>.env.example</code> не редактируйте под секреты: он хранится в GitHub. Секреты принадлежат только игнорируемым <code>.env</code> и <code>.env.production</code>. Значения доступны backend/worker, но не включаются в клиентский JavaScript.</p>
+<h2 id="section-46">3. Запустите дополнительный сервис</h2><p>Из папки проекта:</p>
+<pre><code class="language-bash">docker compose --profile telegram up -d --build --wait --wait-timeout 300
+docker compose logs --tail=80 telegram worker
+</code></pre>
+<p>Это пересоздаст сервисы с обновлёнными env и добавит процесс бота. Для production:</p>
+<pre><code class="language-bash">docker compose --env-file .env.production -f compose.production.yaml --profile telegram up -d --build --wait --wait-timeout 300
+</code></pre>
+<p>Используется <strong>polling</strong>: бот сам запрашивает новые события у Telegram. Публичный HTTPS webhook для этого процесса не нужен. Не запускайте два polling-процесса с одним token. Если ранее у бота настроен webhook, код останавливается с объяснением, не удаляя чужую конфигурацию автоматически. Сначала проверьте назначение существующего бота, затем осознанно отключите его webhook по официальному Bot API или создайте отдельного тестового бота.</p>
+<p>Один token / процесс связан с одной клиникой. Для нескольких ботов создайте отдельные сервисы с собственными token, TELEGRAM_CLINIC_SLUG и изолированными секретами. Система не предлагает пользователю выбрать tenant произвольным сообщением.</p>
+<h2 id="section-47">4. Проверьте команды</h2><p>Откройте <strong>личный</strong> чат со своим ботом и нажмите Start:</p>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/start</td>
+<td>Приветствие и меню</td>
+</tr>
+<tr>
+<td>/book</td>
+<td>Выбор услуги, филиала, врача и свободного времени</td>
+</tr>
+<tr>
+<td>/appointments</td>
+<td>Записи, привязанные к этой подтверждённой сессии Telegram</td>
+</tr>
+<tr>
+<td>/help</td>
+<td>Доступные действия</td>
+</tr>
+<tr>
+<td>/human</td>
+<td>Задача сотруднику и передача диалога</td>
+</tr>
+</tbody></table>
+<p>Запись создаётся только после выбора времени, ввода имени/телефона и отдельного подтверждения согласия. Тестируйте вымышленными данными. Затем откройте кабинет клиники и проверьте календарь, CRM и историю разговора. Посмотрите, что source визита равен telegram.</p>
+<p>Групповые чаты не поддерживаются: в них бот не обрабатывает пациентские сообщения. Фото, медицинские документы, аудио и голосовые сообщения не загружаются и не анализируются. Для обращения используйте текст и меню.</p>
+<h2 id="section-48">5. Свяжите сайт и Telegram безопасно</h2><p>Одинаковый телефон не объединяет профили. Чтобы Telegram увидел запись, созданную на сайте:</p>
+<ol>
+<li>На сайте клиники создайте запись в своём браузере либо войдите под привязанным аккаунтом пациента.</li>
+<li>Откройте «Мои записи» → «Связать Telegram».</li>
+<li>Приложение выдаст случайную одноразовую ссылку либо команду <code>/start link_...</code>.</li>
+<li>Откройте ссылку в <strong>своём</strong> Telegram или отправьте команду своему боту.</li>
+<li>Получите сообщение об успешной привязке и выполните <code>/appointments</code>.</li>
+</ol>
+<p>Ссылка действует 10 минут, используется один раз и теряет силу после завершения исходной веб-сессии. Не отправляйте её другому человеку: она подтверждает доступ к вашим записям. Перепривязка уже связанного Telegram к другому пациенту запрещена; автоматическое слияние профилей не выполняется.</p>
+<p>Если TELEGRAM_BOT_USERNAME не указан, система возвращает команду для ручной вставки. Если бот ещё не запущен, выдача кода сама по себе его не включает.</p>
+<h2 id="section-49">6. Передача сотруднику</h2><p>Отправьте <code>/human</code>. В кабинете появится задача. Сотрудник открывает Диалоги, перехватывает разговор и отправляет организационный ответ. Для Telegram ответ попадает в outbox и отправляется worker в тот же проверенный приватный чат. Сообщение нельзя направить произвольному контакту из поля телефона.</p>
+<p>Разрешены административные вопросы: время, адрес, организационные условия. Не отправляйте медицинские карты, диагнозы, результаты обследований, назначения и снимки. Код блокирует часть очевидных медицинских формулировок в ответах сотрудника, но такой фильтр не заменяет правила работы персонала и правовую оценку канала.</p>
+<h2 id="section-50">7. Напоминания и состояния доставки</h2><p>Пациент отдельно включает напоминания. Автоматические тексты содержат минимум организационной информации. Реактивация дополнительно требует маркетингового согласия. Отзыв согласия отменяет ожидающие сообщения, а worker повторно проверяет условия перед отправкой.</p>
+<table>
+<thead>
+<tr>
+<th>Состояние</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pending</td>
+<td>Сообщение в очереди</td>
+</tr>
+<tr>
+<td>sending</td>
+<td>Взято worker на отправку</td>
+</tr>
+<tr>
+<td>delivered</td>
+<td>Telegram API принял сообщение; прочтение пациентом не подтверждается</td>
+</tr>
+<tr>
+<td>failed</td>
+<td>Терминальная ошибка либо исчерпаны попытки</td>
+</tr>
+<tr>
+<td>suppressed / cancelled</td>
+<td>Доставка отменена условиями доступа или согласиями</td>
+</tr>
+</tbody></table>
+<p>Ошибки и недоступность Telegram не отменяют уже сохранённую запись. После временного сбоя очередь повторяет отправку с ограничением числа попыток. При аварии между отправкой и фиксацией результата возможен повтор сообщения (<em>at least once</em>). Идемпотентность записи пациента от этого не зависит.</p>
+<p>Если Telegram недоступен, сайт и внутренние уведомления продолжают работать. SMS, email и телефония в этой версии не подключены; нельзя обещать их как автоматический запасной канал.</p>
+<h2 id="section-51">8. Частые проблемы</h2><p><strong>Бот молчит.</strong> Проверьте token, TELEGRAM_ENABLED, правильный slug, состояние контейнера и <code>docker compose logs telegram</code>. После изменения .env нужен <code>up -d</code>, одного редактирования файла недостаточно.</p>
+<p><strong>Конфликт polling.</strong> Тот же token запущен ещё где-то. Остановите вторую копию, не смешивайте dev и production.</p>
+<p><strong>Кнопка устарела.</strong> Диалог уже изменился. Повторите <code>/book</code> или <code>/appointments</code>. Это защита от применения старого выбора к новой записи.</p>
+<p><strong>Мои записи пусты.</strong> Созданный на сайте визит не связывается по телефону; выполните одноразовую привязку. Запись в другом tenant остаётся недоступной.</p>
+<p><strong>Диалог виден, но уведомление не пришло.</strong> Проверьте согласие, работу worker, статус pending/failed и то, что пациент не заблокировал бота. Внутреннее delivered не равно Telegram delivered: смотрите поле канала.</p>
+<p><strong>Не удаётся получить токен/API из вашей инфраструктуры.</strong> Проверьте сетевую доступность и применимые условия использования. Не отключайте TLS-проверку и не направляйте медицинские данные через случайный сторонний proxy.</p>
+<p>До коммерческого использования проверьте LEGAL_COMPLIANCE.md. Подключение Telegram — отдельное эксплуатационное и правовое решение, а не следствие наличия кнопки в интерфейсе.</p>
+</article><div class="intro"><strong>Границы готовности</strong><p>Это функциональный MVP для закрытого тестирования. Внешние ключи и настоящая МИС не подключены. До реальных пациентских данных нужны приёмка на вашем сервере, проверка доступа и резервирования, юридическая оценка и эксплуатационные регламенты. Фактические результаты проверок находятся в docs/TESTING.md внутри архива.</p></div></main></div><footer>Файл работает самостоятельно и не обращается к внешним ресурсам для отображения. Технические документы, упомянутые в тексте, находятся в папке docs исходного проекта. Все примеры пациентов вымышлены.</footer><a class="toplink" href="#top">Наверх ↑</a><script>
+document.querySelectorAll('pre').forEach(pre=>{const button=document.createElement('button');button.className='copy';button.textContent='Копировать';button.setAttribute('aria-label','Скопировать команды');button.addEventListener('click',async()=>{const text=pre.querySelector('code').textContent;try{await navigator.clipboard.writeText(text);button.textContent='Скопировано';}catch(e){const range=document.createRange();range.selectNodeContents(pre.querySelector('code'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Выделено — Ctrl+C';}setTimeout(()=>button.textContent='Копировать',2000);});pre.appendChild(button);});
+if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id));}});},{rootMargin:'-10% 0px -75% 0px'});document.querySelectorAll('h1[id],h2[id]').forEach(h=>observer.observe(h));}
+</script></body></html>

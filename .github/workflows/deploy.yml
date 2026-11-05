@@ -1,0 +1,43 @@
+name: Развернуть утверждённый commit
+# Ручной CD. Сначала настройте environment production, обязательное approval
+# и секреты согласно docs/DEPLOYMENT.md. Сам по себе файл ничего не публикует.
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Полный SHA проверенного коммита
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: dentflow-production-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Проверить SHA и подготовить SSH
+        env:
+          TARGET_COMMIT: ${{ inputs.commit }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          [[ "$TARGET_COMMIT" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+      - name: Обновить на сервере в РФ
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          TARGET_COMMIT: ${{ inputs.commit }}
+        run: |
+          [[ "$DEPLOY_HOST" =~ ^[a-zA-Z0-9.-]+$ ]] || exit 1
+          [[ "$DEPLOY_USER" =~ ^[a-zA-Z0-9_-]+$ ]] || exit 1
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" "cd /opt/dentflow && bash scripts/deploy.sh '$TARGET_COMMIT'"
+      - if: always()
+        run: rm -f ~/.ssh/id_ed25519

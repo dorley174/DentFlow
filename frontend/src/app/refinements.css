@@ -1,0 +1,1666 @@
+/* Readable typography and a restrained medical palette. Miniature product
+   illustrations retain their own scale; working interfaces use real text sizes. */
+:root {
+  --muted: #62766e;
+}
+.landing-page :is(h1, h2, h3),
+.clinic-page :is(h1, h2, h3),
+.login-form-wrap h2,
+.legal-page :is(h1, h2) {
+  color: var(--ink);
+}
+.hero-copy > p,
+.feature-copy > p,
+.section-heading > p,
+.feature-card-row p,
+.demo-description > p,
+.integration-grid p,
+.center-heading p,
+.faq-list details p,
+.faq-section > div > p,
+.connect-section > div > p,
+.connection-form .checkbox-field,
+.form-success p,
+.landing-footer > div > p {
+  color: #637970;
+}
+.hero-copy h2 {
+  color: #4c6b65;
+}
+.hero-eyebrow,
+.hero-fineprint {
+  color: #607c71;
+}
+.eyebrow {
+  color: #4f8476;
+}
+.landing-nav nav,
+.login-link {
+  font-size: 13px;
+  color: #5d736c;
+}
+.landing-nav .btn-small {
+  font-size: 12px;
+}
+.value-strip > span {
+  color: #6e8177;
+  font-size: 12px;
+}
+.value-strip > span strong {
+  color: #375c50;
+}
+.value-strip > div {
+  color: #648273;
+  font-size: 12px;
+}
+.feature-copy li {
+  font-size: 12px;
+  color: #567b68;
+}
+.feature-tabs > button {
+  font-size: 12px;
+  color: #6c8276;
+}
+.feature-tabs > button.active {
+  color: #337765;
+}
+.feature-card-row p {
+  font-size: 13px;
+}
+.feature-card-row article > span {
+  color: #5b9075;
+}
+.ai-section h2 {
+  color: white;
+}
+.ai-section h2 em {
+  color: #a5e2c3;
+}
+.ai-section .eyebrow {
+  color: #9cddbe;
+}
+.ai-layout > div > p {
+  color: #bed0c4;
+}
+.ai-points p {
+  color: #b5c9bc;
+  font-size: 12px;
+}
+.ai-points strong {
+  font-size: 13px;
+  color: #ecf4ed;
+}
+.ai-architecture > p {
+  font-size: 11px !important;
+  color: #b2c9b7 !important;
+}
+.demo-clarity {
+  color: #63816a;
+}
+.demo-clarity p {
+  font-size: 12px;
+}
+.demo-small-features {
+  color: #618065;
+  font-size: 11px;
+}
+.demo-footnote {
+  color: #6c816f;
+  font-size: 10px;
+}
+.demo-tag {
+  color: #57744b;
+  font-size: 9px;
+}
+.integration-grid p {
+  font-size: 12px;
+}
+.integration-grid .badge {
+  font-size: 9px;
+}
+.plan-code {
+  color: #527b5b;
+  font-size: 11px;
+}
+.price-card li {
+  font-size: 12px;
+  color: #5e785c;
+}
+.price-value {
+  color: var(--ink);
+}
+.price-value > span {
+  color: #72806b;
+  font-size: 12px;
+}
+.price-recommend {
+  font-size: 10px;
+}
+.price-card > .btn {
+  font-size: 12px;
+}
+.pricing-note {
+  font-size: 11px;
+  color: #6c7f60;
+}
+.faq-list summary {
+  font-size: 14px;
+}
+.faq-list details p {
+  font-size: 13px;
+}
+.connect-section h2 em {
+  color: var(--teal);
+}
+.connect-steps {
+  color: #607b53;
+  font-size: 12px;
+}
+.connection-form input {
+  font-size: 13px !important;
+}
+.connection-form .field > span {
+  font-size: 12px;
+}
+.connection-form .checkbox-field {
+  font-size: 11px;
+}
+.connection-form .btn {
+  font-size: 13px;
+}
+.landing-footer > nav {
+  font-size: 12px;
+  color: #5c7452;
+}
+.footer-bottom {
+  color: #718165;
+  font-size: 10px;
+}
+.clinic-brand {
+  color: #2a5e54;
+}
+.clinic-brand small {
+  color: #648573;
+  font-size: 9px;
+}
+.clinic-brand-symbol img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.clinic-nav nav {
+  color: #5f7e70;
+  font-size: 13px;
+}
+.clinic-hero-copy > p {
+  color: #637e6e;
+}
+.clinic-hero-points {
+  color: #608268;
+  font-size: 11px;
+}
+.clinic-hero-copy .badge {
+  font-size: 10px;
+}
+.floating-care strong {
+  color: #456e50;
+}
+.floating-care small {
+  color: #6a826a;
+}
+.floating-time {
+  color: #587c56;
+  font-size: 10px;
+}
+.filter-pills > button {
+  font-size: 11px;
+  color: #6a835d;
+}
+.filter-pills > button.active {
+  color: #4b774a;
+}
+.service-card strong {
+  color: #254e3a;
+  font-size: 14px;
+}
+.service-card small {
+  color: #708364;
+  font-size: 10px;
+}
+.service-duration {
+  color: #6b8261;
+  font-size: 11px;
+}
+.service-price {
+  color: #397c53;
+  font-size: 15px;
+}
+.service-number {
+  color: #879977;
+  font-size: 12px;
+}
+.doctor-card-info > span {
+  color: #628052;
+  font-size: 11px;
+}
+.doctor-card-info h3 {
+  color: #214538;
+}
+.doctor-card-info p {
+  color: #6f8260;
+  font-size: 11px;
+}
+.doctor-card-info button {
+  color: #47744f;
+  font-size: 12px;
+}
+.section-description {
+  color: #667c5c;
+  font-size: 13px;
+}
+.patient-empty h3 {
+  color: #4d6b3f;
+}
+.patient-empty p {
+  color: #708260;
+  font-size: 12px;
+}
+.visit-details h3 {
+  color: #274d3c;
+  font-size: 15px;
+}
+.visit-details p {
+  font-size: 12px;
+  color: #5e7953;
+}
+.visit-details small {
+  font-size: 11px;
+  color: #788a66;
+}
+.visit-date {
+  color: #5e8550;
+}
+.visit-actions .text-btn {
+  font-size: 12px;
+}
+.visit-actions .btn {
+  font-size: 12px;
+}
+.branch-card h3 {
+  color: #35593c;
+}
+.branch-card p {
+  color: #6c8058;
+  font-size: 12px;
+}
+.contact-phone {
+  color: #4d7551;
+  font-size: 13px;
+}
+.branch-card .btn {
+  font-size: 11px;
+}
+.clinic-footer {
+  color: #6b7e5d;
+  font-size: 11px;
+}
+.chat-head strong {
+  color: #2b5b45;
+  font-size: 13px;
+}
+.chat-head > div > span {
+  font-size: 10px;
+  color: #64816a;
+}
+.chat-bubble.assistant {
+  color: #3f6247;
+}
+.chat-bubble.patient {
+  background: #e2f1e5;
+  color: #2e6246;
+}
+.chat-options button {
+  color: #54784c;
+  font-size: 11px;
+}
+.chat-compose input {
+  font-size: 12px;
+  color: #35523a;
+}
+.chat-compose input::placeholder {
+  color: #7a8b70;
+}
+.chat-footer {
+  color: #6e8162;
+  font-size: 9px;
+}
+.chat-footer button {
+  font-size: 9px;
+  color: #54794f;
+}
+.chat-launcher {
+  font-size: 13px;
+}
+.chat-bubble > small:last-child {
+  opacity: 0.75;
+}
+.step-track > div {
+  color: #7b8d71;
+}
+.step-track > div > small {
+  font-size: 11px;
+}
+.step-track > div.current {
+  color: #437c55;
+}
+.booking-summary strong {
+  color: #375c38;
+}
+.booking-summary > span {
+  color: #68825c;
+  font-size: 12px;
+}
+.doctor-picker strong {
+  color: #36513b;
+  font-size: 13px;
+}
+.doctor-picker small {
+  font-size: 11px;
+  color: #6f8265;
+}
+.inline-note {
+  color: #6c825f;
+  font-size: 12px;
+}
+.inline-note > span {
+  color: #5b784b;
+}
+.quick-dates > button {
+  font-size: 11px;
+  color: #6d815d;
+}
+.quick-dates > button.selected {
+  color: #49713e;
+}
+.slot-grid button {
+  color: #567b48;
+  font-size: 13px;
+}
+.slot-grid button.selected {
+  color: white;
+}
+.booking-review strong {
+  color: #365d34;
+}
+.booking-review span:not(.review-icon),
+.booking-review small {
+  color: #658057;
+  font-size: 12px;
+}
+.booking-success h2 {
+  color: #244e36;
+}
+.booking-success > p {
+  color: #6c805a;
+  font-size: 13px;
+}
+.confirmation-card > div {
+  font-size: 13px;
+  color: #5a7b49;
+}
+.confirmation-card strong {
+  color: #3f6436;
+}
+.badge {
+  font-size: 10px;
+  color: #627469;
+  background: #eff3ef;
+}
+.badge-green {
+  color: #33745b;
+  background: #e6f3eb;
+}
+.badge-blue {
+  color: #527598;
+  background: #eaf1f9;
+}
+.badge-amber {
+  color: #896d2f;
+  background: #faf2dc;
+}
+.badge-red {
+  color: #a25350;
+  background: #f9eae8;
+}
+.badge-purple {
+  color: #7b6596;
+  background: #f0ecf7;
+}
+.field small,
+.checkbox-field {
+  color: #697e6c;
+}
+.field small {
+  font-size: 12px;
+}
+.checkbox-field {
+  font-size: 12px;
+}
+.loading-state {
+  color: #61796a;
+}
+.empty-state h3 {
+  font-size: 15px;
+  color: #5a7566;
+}
+.empty-state p {
+  font-size: 12px;
+  color: #718575;
+}
+.login-story h1 {
+  color: white;
+}
+.login-story h1 em {
+  color: #a6dfbf;
+}
+.login-story > div > p {
+  color: #bed1c4;
+}
+.login-bottom {
+  color: #bad0bd;
+  font-size: 11px;
+}
+.login-story .eyebrow {
+  color: #99ceab;
+}
+.login-form-side > .text-link {
+  color: #5b7d60;
+  font-size: 12px;
+}
+.login-form-wrap > p {
+  color: #6e845f;
+  font-size: 13px;
+}
+.login-form-wrap .eyebrow {
+  font-size: 11px;
+  color: #65834e;
+}
+.demo-login > span {
+  color: #5c7f43;
+  font-size: 12px;
+}
+.demo-login p {
+  color: #768a63;
+  font-size: 11px;
+}
+.demo-login button {
+  font-size: 10px;
+  color: #5d7d48;
+}
+.login-form-wrap > .login-help {
+  font-size: 11px !important;
+  color: #7a8a6d !important;
+}
+.app-sidebar {
+  background: #fff;
+}
+.sidebar-clinic strong {
+  color: #365d4b;
+  font-size: 12px;
+}
+.sidebar-clinic div > span {
+  color: #738875;
+  font-size: 10px;
+}
+.sidebar-clinic .badge {
+  font-size: 8px;
+}
+.nav-group-label {
+  font-size: 9px;
+  color: #8a9b88;
+  letter-spacing: 1px;
+}
+.sidebar-nav button {
+  font-size: 12px;
+  color: #5f7868;
+  height: 39px;
+}
+.sidebar-nav button.active {
+  background: #e7f3eb;
+  color: #217260;
+}
+.sidebar-nav button > small {
+  color: #59805e;
+  font-size: 10px;
+}
+.sidebar-nav button.dev-nav {
+  color: #887b4c;
+}
+.sidebar-bottom > a {
+  font-size: 11px;
+  color: #657f5b;
+}
+.sidebar-user strong {
+  font-size: 11px;
+  color: #3d654c;
+}
+.sidebar-user div > span {
+  font-size: 10px;
+  color: #71856b;
+}
+.topbar-breadcrumb {
+  font-size: 12px;
+  color: #74866d;
+}
+.topbar-breadcrumb > strong {
+  color: #496d4e;
+}
+.global-search {
+  width: 220px;
+  color: #7f9573;
+}
+.global-search input {
+  font-size: 11px;
+  color: #41663f;
+}
+.global-search input::placeholder {
+  color: #7e9071;
+}
+.topbar-actions > .icon-btn {
+  color: #6e8561;
+}
+.app-dev-strip {
+  color: #857d51;
+  font-size: 10px;
+}
+.app-dev-strip > a {
+  color: #7a7146;
+}
+.admin-eyebrow {
+  font-size: 11px;
+  color: #6e8662;
+}
+.admin-page-heading h1 {
+  color: var(--ink);
+  font-size: 28px;
+}
+.admin-page-heading p {
+  font-size: 13px;
+  color: #758769;
+}
+.admin-page-heading > .btn {
+  font-size: 12px;
+}
+.metric-card > div {
+  font-size: 12px;
+  color: #6c8061;
+}
+.metric-card > strong {
+  color: #234c3b;
+  font-size: 30px;
+}
+.metric-card > small {
+  font-size: 10px;
+  color: #74886a;
+}
+.metric-icon {
+  color: #6f9a53;
+}
+.metric-icon.blue {
+  color: #728f9c;
+}
+.metric-icon.purple {
+  color: #957eaa;
+}
+.metric-icon.amber {
+  color: #a7965c;
+}
+.panel-inner-heading h3 {
+  color: #365d42;
+  font-size: 15px;
+}
+.panel-inner-heading p {
+  font-size: 11px;
+  color: #7b8e6b;
+}
+.panel-inner-heading > .text-btn {
+  font-size: 11px;
+  color: #4f7c4e;
+}
+.count-label {
+  font-size: 10px;
+  color: #668951;
+}
+.task-line strong {
+  font-size: 13px;
+  color: #41673e;
+}
+.task-line small {
+  font-size: 11px;
+  color: #788c66;
+}
+.task-line .badge {
+  font-size: 10px;
+}
+.activity-line strong {
+  font-size: 12px;
+  color: #51764b;
+}
+.activity-line small {
+  font-size: 10px;
+  color: #84976f;
+}
+.activity-line > span {
+  background: #86b16e;
+}
+.activity-chart .chart-column > span {
+  font-size: 10px;
+  color: #729753;
+}
+.activity-chart .chart-column > small {
+  font-size: 10px;
+  color: #7f936b;
+}
+.chart-legend {
+  font-size: 10px;
+  color: #789167;
+}
+.chart-column > div {
+  background: #c4dcb1;
+}
+.chart-column.current > div {
+  background: #729d57;
+}
+.panel-heading h2 {
+  color: #2c5340;
+  font-size: 18px;
+}
+.panel-heading p {
+  font-size: 12px;
+  color: #7b8e6b;
+}
+.panel-heading > .btn {
+  font-size: 12px;
+}
+.table-scroll table {
+  font-size: 12px;
+  color: #5a7953;
+}
+.table-scroll th {
+  font-size: 11px;
+  color: #748e64;
+  background: #fafcf6;
+}
+.table-scroll td strong {
+  font-size: 13px;
+  color: #315a3c;
+}
+.table-scroll td > small {
+  font-size: 11px;
+  color: #788d68;
+}
+.table-actions .text-btn {
+  font-size: 11px;
+}
+.table-scroll .badge {
+  font-size: 10px;
+}
+.cell-person .avatar {
+  color: #69924e;
+}
+.table-toolbar {
+  font-size: 12px;
+  color: #6f8a5c;
+}
+.table-toolbar select,
+.calendar-filters select {
+  font-size: 11px;
+  color: #517847;
+}
+.catalog-notice {
+  color: #6c8757;
+  font-size: 12px;
+}
+.catalog-notice .text-btn {
+  font-size: 11px;
+}
+.overview-schedule td strong {
+  font-size: 12px;
+}
+.overview-schedule td small {
+  font-size: 10px;
+}
+.overview-schedule .badge {
+  font-size: 9px;
+}
+.overview-schedule .text-btn {
+  font-size: 10px;
+}
+.overview-schedule th {
+  font-size: 10px;
+}
+.patient-segments span {
+  font-size: 11px;
+  color: #6c8657;
+}
+.patient-segments strong {
+  color: #46713e;
+}
+.patient-detail h3 {
+  color: #365b38;
+}
+.patient-detail p,
+.patient-detail-head p {
+  color: #6c8458;
+}
+.appointment-detail-header h3 {
+  color: #315737;
+}
+.appointment-detail-header div > span {
+  font-size: 12px;
+  color: #6d8659;
+}
+.detail-list {
+  font-size: 12px;
+}
+.detail-list dt {
+  color: #758866;
+}
+.detail-list dd {
+  color: #496f3e;
+}
+.notification-item strong {
+  font-size: 13px;
+  color: #4d743e;
+}
+.notification-item p {
+  font-size: 12px;
+  color: #748d60;
+}
+.calendar-date-control input {
+  font-size: 13px;
+  color: #3f6835;
+}
+.calendar-date-control > .text-btn {
+  font-size: 11px;
+  color: #6c8d4f;
+}
+.segmented > button {
+  font-size: 11px;
+  color: #718a5c;
+}
+.segmented > button.active {
+  color: #477238;
+}
+.calendar-filters > span {
+  font-size: 10px;
+  color: #7c9365;
+}
+.calendar-filters > .btn {
+  font-size: 11px;
+  color: #587940;
+}
+.day-doctor-heading strong {
+  font-size: 11px;
+  color: #4a6c3a;
+}
+.day-doctor-heading small {
+  font-size: 9px;
+  color: #7b9163;
+}
+.day-time-heading,
+.time-rail > span {
+  font-size: 10px;
+  color: #7d9365;
+}
+.calendar-event > small {
+  font-size: 9px;
+  color: #618349;
+}
+.calendar-event > strong {
+  font-size: 11px;
+  color: #3d662f;
+}
+.calendar-event > span {
+  font-size: 9px;
+  color: #688a4e;
+}
+.event-scheduled > strong {
+  color: #4b6c84;
+}
+.event-scheduled > small,
+.event-scheduled > span {
+  color: #6b8ca2;
+}
+.week-day-head {
+  color: #6a8b4b;
+}
+.week-day-head span {
+  font-size: 10px;
+}
+.week-empty {
+  font-size: 10px;
+  color: #849d6b;
+}
+.month-weekdays span {
+  font-size: 11px;
+  color: #6e8c4d;
+}
+.month-grid > button > strong {
+  font-size: 12px;
+  color: #547e33;
+}
+.month-grid > button > span {
+  font-size: 9px;
+  color: #628644;
+}
+.month-grid > button > small {
+  font-size: 9px;
+  color: #879b6c;
+}
+.month-grid > button.outside-month > strong {
+  color: #a1b08d;
+}
+.list-period {
+  font-size: 12px;
+  color: #688647;
+}
+.crm-summary {
+  font-size: 12px;
+  color: #6d8953;
+}
+.crm-summary strong {
+  font-size: 15px;
+  color: #3c6a31;
+}
+.crm-summary > .badge {
+  font-size: 10px;
+}
+.kanban-column {
+  background: #f1f6eb;
+}
+.kanban-column > h3 {
+  font-size: 12px;
+  color: #4c7439;
+}
+.kanban-column > h3 > small {
+  font-size: 11px;
+  color: #789757;
+}
+.lead-source .badge {
+  font-size: 9px;
+  color: #748b55;
+}
+.lead-title {
+  font-size: 13px;
+  color: #315d2d;
+}
+.lead-patient {
+  font-size: 11px;
+  color: #69884a;
+}
+.lead-card > p {
+  font-size: 11px;
+  color: #7d9660;
+}
+.lead-bottom strong {
+  font-size: 12px;
+  color: #517739;
+}
+.lead-bottom > span {
+  font-size: 10px;
+  color: #8aa56b;
+}
+.lead-card > select {
+  font-size: 10px;
+  color: #628642;
+}
+.kanban-empty {
+  font-size: 11px;
+  color: #8ba373;
+}
+.conversation-list strong {
+  font-size: 12px;
+  color: #466f34;
+}
+.conversation-list p {
+  font-size: 11px;
+  color: #79935a;
+}
+.conversation-list > button > div > span {
+  font-size: 10px;
+  color: #839e63;
+}
+.operator-chat-head > div > strong {
+  font-size: 14px;
+  color: #3b652e;
+}
+.operator-chat-head .badge {
+  font-size: 9px;
+}
+.operator-chat-head .btn {
+  font-size: 11px;
+}
+.operator-chat-messages > .chat-bubble {
+  font-size: 12px;
+}
+.message-role {
+  font-size: 10px;
+  color: #678b48;
+}
+.operator-hint {
+  font-size: 11px;
+  color: #789459;
+}
+.settings-form > h3,
+.settings-note h3 {
+  color: #3c6431;
+  font-size: 15px;
+}
+.settings-note p,
+.settings-note ul {
+  font-size: 12px;
+  color: #758e58;
+}
+.settings-note > .text-link {
+  font-size: 12px;
+  color: #4f7939;
+}
+.settings-note code {
+  font-size: 11px;
+  color: #648548;
+}
+.settings-form > .btn {
+  font-size: 12px;
+}
+.toggle-row > span > strong {
+  font-size: 13px;
+  color: #4c7434;
+}
+.toggle-row small {
+  font-size: 11px;
+  color: #80965e;
+}
+.color-input {
+  color: #6d8a4b;
+}
+.integration-admin-card > div > h3 {
+  font-size: 16px;
+  color: #476c2e;
+}
+.integration-admin-card > p {
+  font-size: 12px;
+  color: #789057;
+}
+.integration-admin-card .badge {
+  font-size: 10px;
+}
+.integration-admin-card > .text-btn {
+  font-size: 12px;
+}
+.widget-settings h3 {
+  font-size: 15px;
+  color: #4d722f;
+}
+.widget-settings p {
+  font-size: 12px;
+  color: #789152;
+}
+.widget-settings > .btn {
+  font-size: 12px;
+}
+.integration-instructions h3 {
+  font-size: 15px;
+  color: #4d752f;
+}
+.integration-instructions p {
+  font-size: 13px;
+  color: #789153;
+}
+.automation-run h3 {
+  color: #4b7330;
+  font-size: 15px;
+}
+.automation-run p {
+  font-size: 12px;
+  color: #789153;
+}
+.automation-run > .field > span {
+  font-size: 11px;
+}
+.automation-run > .btn {
+  font-size: 12px;
+}
+.automation-result h3 {
+  color: #426c2c;
+  font-size: 15px;
+}
+.automation-counts {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: #6a854d;
+  font-size: 12px;
+}
+.automation-counts > span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.automation-counts strong {
+  font-size: 24px;
+  color: #547a31;
+  font-weight: 500;
+}
+.analytics-chart h3,
+.status-breakdown h3 {
+  font-size: 15px;
+  color: #4d752e;
+}
+.status-breakdown > div {
+  font-size: 12px;
+  color: #698547;
+}
+.status-breakdown strong {
+  color: #547c31;
+}
+.status-breakdown > div > span {
+  width: 110px;
+}
+.analytics-note {
+  font-size: 11px;
+  color: #7b9455;
+}
+.simulator-panel h2 {
+  color: #42692a;
+}
+.simulator-panel p {
+  font-size: 13px;
+  color: #75904f;
+}
+.simulator-panel > .muted {
+  font-size: 11px;
+}
+.simulator-panel > .btn {
+  font-size: 12px;
+}
+.super-label {
+  color: #688849;
+  font-size: 12px;
+}
+.super-content .admin-page-heading h1 {
+  color: var(--ink);
+}
+.super-content .admin-page-heading .eyebrow {
+  font-size: 11px;
+  color: #6a8a44;
+}
+.super-content .metric-card strong {
+  color: #335c2f;
+}
+.super-navigation button {
+  font-size: 12px;
+  color: #6e8c4e;
+}
+.super-navigation button.active {
+  color: #476f31;
+}
+.super-navigation button.super-refresh {
+  color: #7f975b;
+}
+.super-access-note {
+  font-size: 11px;
+  color: #7a9355;
+}
+.super-plan h2 {
+  color: #3d6428;
+}
+.super-plan-price {
+  color: #4d742b;
+}
+.super-plan-price small {
+  color: #7c9454;
+  font-size: 12px;
+}
+.super-plan dl {
+  font-size: 12px;
+  color: #7d9355;
+}
+.super-plan dd {
+  color: #5a7f36;
+}
+.super-plan .btn {
+  font-size: 12px;
+}
+.monitor-card h3 {
+  color: #52772e;
+  font-size: 16px;
+}
+.monitor-card p {
+  font-size: 12px;
+  color: #7d9554;
+}
+.monitor-card > strong {
+  color: #6a8b3b;
+}
+.monitor-card .btn {
+  font-size: 12px;
+}
+.dev-tools-banner strong {
+  font-size: 14px;
+  color: #5f7e35;
+}
+.dev-tools-banner p {
+  font-size: 12px;
+  color: #7c9451;
+}
+.dev-tools-banner > .btn {
+  font-size: 12px;
+}
+.reset-panel h3 {
+  color: #986044;
+}
+.reset-panel p {
+  font-size: 12px;
+  color: #92795d;
+}
+.reset-panel > .btn {
+  font-size: 12px;
+}
+.legal-page p {
+  color: #6e8353;
+}
+.legal-page p.legal-intro {
+  color: #778e55;
+  font-size: 13px;
+}
+.patient-account-tools {
+  margin-top: 24px;
+  border: 1px solid #e2ebd5;
+  border-radius: 13px;
+  overflow: hidden;
+}
+.patient-tools-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  background: #f8fbf3;
+}
+.patient-tools-bar > span {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 12px;
+  color: #65834d;
+}
+.patient-tools-bar > div {
+  display: flex;
+  gap: 9px;
+}
+.patient-tools-bar .btn {
+  font-size: 11px;
+  min-height: 36px;
+  padding: 9px 12px;
+}
+.patient-updates {
+  padding: 23px;
+}
+.patient-updates h3 {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #456a34;
+  margin-bottom: 7px;
+}
+.patient-updates article {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 17px 0;
+  border-bottom: 1px solid #edf2e4;
+}
+.patient-updates article:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.patient-updates article > div {
+  flex: 1;
+}
+.patient-updates strong {
+  font-size: 13px;
+  font-weight: 550;
+  color: #51713d;
+}
+.patient-updates p {
+  font-size: 12px;
+  color: #7c925d;
+  line-height: 1.8;
+  margin-top: 4px;
+}
+.patient-updates small {
+  font-size: 10px;
+  color: #8a9f69;
+  display: block;
+  margin-top: 5px;
+}
+.telegram-link > p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #6c8650;
+  margin: 17px 0;
+}
+.telegram-link > .btn {
+  margin-bottom: 22px;
+}
+.telegram-link > .muted {
+  font-size: 11px;
+  color: #849963;
+}
+.patient-data-actions {
+  border-top: 1px solid #e5edda;
+  margin-top: 25px;
+  padding-top: 24px;
+}
+.patient-data-actions h3 {
+  font-size: 15px;
+  color: #46682f;
+  margin-bottom: 11px;
+}
+.patient-data-actions p {
+  font-size: 12px;
+  color: #7a9057;
+  line-height: 1.9;
+  margin-bottom: 19px;
+}
+.patient-data-actions > .text-btn {
+  display: flex;
+  margin-top: 17px;
+  font-size: 12px;
+}
+@media (max-width: 1000px) {
+  .global-search {
+    width: 185px;
+  }
+  .metric-card > div {
+    font-size: 11px;
+  }
+  .metric-card > strong {
+    font-size: 28px;
+  }
+  .metric-card > small {
+    font-size: 10px;
+  }
+  .overview-schedule .table-scroll table {
+    min-width: 700px;
+  }
+  .section-heading > p {
+    font-size: 13px;
+  }
+  .clinic-hero-points {
+    font-size: 10px;
+  }
+  .sidebar-clinic strong {
+    font-size: 11px;
+  }
+  .sidebar-clinic div > span {
+    font-size: 9px;
+  }
+  .sidebar-nav button {
+    font-size: 11px;
+  }
+  .sidebar-user div > span {
+    font-size: 9px;
+  }
+  .calendar-filters > .btn {
+    font-size: 10px;
+  }
+  .conversation-list strong {
+    font-size: 11px;
+  }
+  .conversation-list p {
+    font-size: 10px;
+  }
+  .conversation-list > button > div > span {
+    font-size: 9px;
+  }
+  .patient-tools-bar {
+    flex-wrap: wrap;
+  }
+  .patient-tools-bar > div {
+    margin-left: 26px;
+  }
+  .super-label {
+    font-size: 11px;
+  }
+  .super-navigation button {
+    font-size: 11px;
+  }
+}
+@media (max-width: 760px) {
+  .app-sidebar .sidebar-nav button {
+    font-size: 13px;
+  }
+  .sidebar-clinic strong {
+    font-size: 13px;
+  }
+  .sidebar-clinic div > span {
+    font-size: 10px;
+  }
+  .sidebar-user strong {
+    font-size: 12px;
+  }
+  .sidebar-user div > span {
+    font-size: 10px;
+  }
+  .global-search {
+    width: 165px;
+  }
+  .global-search input {
+    font-size: 10px;
+  }
+  .topbar-breadcrumb {
+    font-size: 11px;
+  }
+  .app-dev-strip {
+    font-size: 8px;
+  }
+  .app-dev-strip > a {
+    font-size: 8px;
+  }
+  .admin-page-heading h1 {
+    font-size: 24px;
+  }
+  .admin-page-heading p {
+    font-size: 11px;
+  }
+  .admin-page-heading > .btn {
+    font-size: 11px;
+  }
+  .admin-eyebrow {
+    font-size: 10px;
+  }
+  .metric-card > div {
+    font-size: 10px;
+  }
+  .metric-card > strong {
+    font-size: 27px;
+  }
+  .metric-card > small {
+    font-size: 9px;
+  }
+  .panel-inner-heading h3 {
+    font-size: 14px;
+  }
+  .panel-inner-heading p {
+    font-size: 10px;
+  }
+  .panel-inner-heading > .text-btn {
+    font-size: 10px;
+  }
+  .panel-heading h2 {
+    font-size: 17px;
+  }
+  .panel-heading p {
+    font-size: 11px;
+  }
+  .panel-heading > .btn {
+    font-size: 11px;
+  }
+  .table-scroll table {
+    font-size: 12px;
+    min-width: 600px;
+  }
+  .table-scroll td strong {
+    font-size: 12px;
+  }
+  .table-scroll td > small {
+    font-size: 10px;
+  }
+  .calendar-date-control input {
+    font-size: 12px;
+  }
+  .calendar-date-control > .text-btn {
+    font-size: 10px;
+  }
+  .calendar-filters select {
+    font-size: 10px;
+  }
+  .calendar-filters > span {
+    font-size: 9px;
+  }
+  .segmented > button {
+    font-size: 10px;
+  }
+  .month-grid > button > span {
+    font-size: 7px;
+  }
+  .month-grid > button > small {
+    font-size: 8px;
+  }
+  .crm-summary {
+    font-size: 10px;
+  }
+  .crm-summary strong {
+    font-size: 13px;
+  }
+  .crm-summary > .badge {
+    font-size: 9px;
+  }
+  .conversation-list > button {
+    flex-basis: 225px;
+  }
+  .operator-chat-head > div > strong {
+    font-size: 13px;
+  }
+  .operator-chat-head .btn {
+    font-size: 10px;
+  }
+  .operator-hint {
+    font-size: 10px;
+  }
+  .step-track > div > small {
+    font-size: 10px;
+  }
+  .doctor-picker strong {
+    font-size: 13px;
+  }
+  .doctor-picker small {
+    font-size: 11px;
+  }
+  .section-heading h2,
+  .center-heading h2 {
+    font-size: 33px;
+  }
+  .hero-copy > p {
+    font-size: 14px;
+  }
+  .clinic-hero-copy > p {
+    font-size: 14px;
+  }
+  .clinic-brand small {
+    font-size: 8px;
+  }
+  .clinic-hero-points {
+    font-size: 10px;
+  }
+  .clinic-nav > .btn {
+    font-size: 11px;
+  }
+  .service-card strong {
+    font-size: 14px;
+  }
+  .service-price {
+    font-size: 14px;
+  }
+  .doctor-card-info h3 {
+    font-size: 16px;
+  }
+  .doctor-card-info > span {
+    font-size: 10px;
+  }
+  .doctor-card-info p {
+    font-size: 10px;
+  }
+  .doctor-card-info button {
+    font-size: 11px;
+  }
+  .visit-details h3 {
+    font-size: 14px;
+  }
+  .visit-details p {
+    font-size: 11px;
+  }
+  .visit-details small {
+    font-size: 10px;
+  }
+  .visit-actions .text-btn,
+  .visit-actions .btn {
+    font-size: 11px;
+  }
+  .patient-tools-bar {
+    padding: 17px;
+  }
+  .patient-tools-bar > span {
+    font-size: 11px;
+  }
+  .patient-tools-bar > div {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+  .patient-tools-bar .btn {
+    font-size: 10px;
+  }
+  .patient-updates {
+    padding: 19px;
+  }
+  .patient-updates p {
+    font-size: 11px;
+  }
+  .patient-updates strong {
+    font-size: 12px;
+  }
+  .patient-updates .badge {
+    font-size: 9px;
+  }
+  .patient-updates h3 {
+    font-size: 13px;
+  }
+  .super-label {
+    font-size: 9px;
+  }
+  .super-navigation button {
+    font-size: 10px;
+  }
+  .super-content .admin-page-heading h1 {
+    font-size: 28px;
+  }
+  .super-content .admin-page-heading .eyebrow {
+    font-size: 10px;
+  }
+  .super-content .metric-card > small {
+    font-size: 9px;
+  }
+  .super-access-note {
+    font-size: 10px;
+  }
+  .super-plan .btn {
+    font-size: 12px;
+  }
+  .reset-panel > .btn {
+    font-size: 11px;
+  }
+  .legal-page p {
+    font-size: 13px;
+  }
+  .toast {
+    font-size: 12px;
+  }
+  .widget-page > .chat-panel {
+    max-height: calc(100dvh - 37px);
+  }
+}
+@media (max-width: 420px) {
+  .global-search {
+    width: 130px;
+  }
+  .topbar-breadcrumb {
+    font-size: 10px;
+  }
+  .app-dev-strip {
+    font-size: 7px;
+  }
+  .app-dev-strip > a {
+    font-size: 7px;
+  }
+  .admin-page-heading h1 {
+    font-size: 21px;
+  }
+  .admin-page-heading p {
+    font-size: 10px;
+  }
+  .admin-page-heading > .btn {
+    font-size: 10px;
+  }
+  .metric-card > div {
+    font-size: 9px;
+  }
+  .metric-card > strong {
+    font-size: 24px;
+  }
+  .metric-card > small {
+    font-size: 8px;
+  }
+  .panel-inner-heading h3 {
+    font-size: 13px;
+  }
+  .panel-inner-heading > .text-btn {
+    font-size: 9px;
+  }
+  .calendar-filters select {
+    font-size: 9px;
+  }
+  .calendar-filters > .btn {
+    font-size: 9px;
+  }
+  .step-track > div > small {
+    font-size: 8px;
+  }
+  .hero-copy > p {
+    font-size: 13px;
+  }
+  .feature-card-row p {
+    font-size: 12px;
+  }
+  .doctor-card-info > span {
+    font-size: 9px;
+  }
+  .doctor-card-info h3 {
+    font-size: 14px;
+  }
+  .doctor-card-info p {
+    font-size: 9px;
+  }
+  .doctor-card-info button {
+    font-size: 10px;
+  }
+  .visit-details h3 {
+    font-size: 13px;
+  }
+  .visit-actions .btn,
+  .visit-actions .text-btn {
+    font-size: 10px;
+  }
+  .super-label {
+    font-size: 8px;
+  }
+  .super-content .admin-page-heading h1 {
+    font-size: 25px;
+  }
+  .field small {
+    font-size: 11px;
+  }
+}

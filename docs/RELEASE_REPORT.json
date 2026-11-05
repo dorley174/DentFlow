@@ -1,0 +1,52 @@
+{
+  "project": "DentFlow",
+  "release_date": "2026-11-05",
+  "status": "Functional MVP for a closed Dev Stand; commercial readiness gates remain",
+  "backend": {
+    "pytest": {
+      "passed": 37,
+      "skipped": 1,
+      "warnings": 1,
+      "duration_seconds": 36.64,
+      "database": "SQLite, ASGI in-process"
+    },
+    "last_channel_regression": {
+      "passed": 7,
+      "duration_seconds": 9.43
+    }
+  },
+  "frontend": {
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "typecheck": "passed",
+    "production_build": "passed",
+    "standalone_server": "verified",
+    "static_pages": 7
+  },
+  "database": {
+    "application_tables": 26,
+    "frozen_migration_sqlite": "passed",
+    "orm_schema_differences": 0,
+    "postgresql_ddl": "passed on PostgreSQL 18.6 PGlite",
+    "exclusion_adjacent_overlap_cancelled": "passed"
+  },
+  "infrastructure": {
+    "compose_development_config": "passed",
+    "compose_devstand_config": "passed",
+    "compose_production_config": "passed",
+    "bash_syntax": "passed"
+  },
+  "not_executed": [
+    "Docker Engine build/start in this environment",
+    "Desktop/mobile browser visual QA",
+    "Live PostgreSQL concurrency (test included and configured in GitHub CI)",
+    "Live Telegram network delivery",
+    "Live LLM calls and billing",
+    "Real external MIS and payments",
+    "Production deployment, DNS, TLS and restore on target host",
+    "Independent security and legal audit"
+  ],
+  "external_calls_default": "disabled",
+  "payment_mode": "DEMO",
+  "patient_data": "synthetic in Dev Stand"
+}
